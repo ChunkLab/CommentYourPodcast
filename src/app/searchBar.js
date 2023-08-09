@@ -21,16 +21,23 @@ async function getPodcasts(term) {
 
 const SearchBar = () => {
     const [loading, setLoading] = useState(false);
+    const [searchResults, setSearchResults] = useState([]);
+
     const handleValue = debounce(async (value) => {
         setLoading(true)
         const res = await getPodcasts(value);
         setLoading(false)
-        console.log(res);
+        setSearchResults(res);
     }, 1000)
 
     return <>
         <input type='text' placeholder='podcast or {url : todo define more}' onInput={(e) => { handleValue(e.target.value) }} />
-        {loading ? 'loading' : ''}
+        {loading ? 'loading' :
+            <ul>
+                {searchResults.map((e, i) =>
+                    <li key={i}>{e}</li>
+                )}
+            </ul>}
     </>
 }
 export default SearchBar
