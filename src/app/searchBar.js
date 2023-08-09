@@ -11,12 +11,12 @@ async function wait(n) {
     })
 }
 
-const PODCASTS = ["sup", "sup2"]
+const PODCASTS = ["sup", "sup2", "joe rogan", "american life", "studio 404"]
 
 async function getPodcasts(term) {
     await wait(500);
 
-    return PODCASTS;
+    return PODCASTS.filter(e => e.includes(term));
 }
 
 const SearchBar = () => {
