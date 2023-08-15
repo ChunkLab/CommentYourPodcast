@@ -7,37 +7,43 @@ const podcast_data = {
             title: 'yoyoy',
             description:
                 'fdsd df sdfd f dsfd fdf dfdf dfdfdfsdf dfsdf dfffsdfd',
-            duree: 10,
+            duration: 10,
+            nbComments: 13,
         },
         {
             title: 'yoyoy',
             description:
                 'fdsd df sdfd f dsfd fdf dfdf dfdfdfsdf dfsdf dfffsdfd',
-            duree: 10,
+            duration: 10,
+            nbComments: 2,
         },
         {
             title: 'yoyoy',
             description:
                 'fdsd df sdfd f dsfd fdf dfdf dfdfdfsdf dfsdf dfffsdfd',
-            duree: 10,
+            duration: 10,
+            nbComments: 3,
         },
         {
             title: 'yoyoy',
             description:
                 'fdsd df sdfd f dsfd fdf dfdf dfdfdfsdf dfsdf dfffsdfd',
-            duree: 10,
+            duration: 10,
+            nbComments: 23,
         },
         {
             title: 'yoyoy',
             description:
                 'fdsd df sdfd f dsfd fdf dfdf dfdfdfsdf dfsdf dfffsdfd',
-            duree: 10,
+            duration: 10,
+            nbComments: 23,
         },
         {
             title: 'yoyoy',
             description:
                 'fdsd df sdfd f dsfd fdf dfdf dfdfdfsdf dfsdf dfffsdfd',
-            duree: 10,
+            duration: 10,
+            nbComments: 3,
         },
     ],
     nbComments: 23,
@@ -84,6 +90,49 @@ export default function Home({ params }) {
                     </div>
                 </div>
             </div>
+            <ul>
+                {podcast_data.episodes.map((e, i) => (
+                    <li key={i}>
+                        <div className="w-full max-w-lg py-8 flex flex-row items-center justify-center bg-[#FFFBFB] rounded-lg shadow-xl mt-10">
+                            <div className="flex flex-col md:flex-row w-3/4 md:w-5/6 space-x-0 md:space-x-8">
+                                <div className="w-20 flex flex-col items-center justify-center">
+                                    <figure className=" rounded-full overflow-hidden">
+                                        <img
+                                            src={podcast_data.img}
+                                            alt={podcast_data.title}
+                                        />
+                                    </figure>
+                                </div>
+                                <div className="w-full md:w-3/5 flex flex-col justify-center items-center">
+                                    <div className="flex flex-col justify-center">
+                                        <h2 className="text-center md:text-left text-xl font-bold text-gray-900">
+                                            {e.title}
+                                        </h2>
+                                        <p className="inline text-gray-700 font-normal leading-6 w-full text-base">
+                                            {e.description}
+                                        </p>
+                                    </div>
+
+                                    <ul className="space-x-4 flex flex-row justify-center w-full mb-4">
+                                        <li className="text-sm text-gray-800">
+                                            <strong className="text-gray-900">
+                                                {e.nbComments}
+                                            </strong>{' '}
+                                            Comments
+                                        </li>
+                                        <li className="text-sm text-gray-800">
+                                            <strong className="text-gray-900">
+                                                {e.duration}
+                                            </strong>{' '}
+                                            Duration
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                ))}
+            </ul>
         </main>
     )
 }
