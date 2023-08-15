@@ -1,49 +1,79 @@
 'use client'
-import debounce from 'lodash.debounce';
-import { useState } from 'react';
+import debounce from 'lodash.debounce'
+import Link from 'next/link'
+import { useState } from 'react'
 
 async function wait(n) {
-  return new Promise((res, _) => {
-    setTimeout(() => {
-      res();
-    }, n)
-  })
+    return new Promise((res, _) => {
+        setTimeout(() => {
+            res()
+        }, n)
+    })
 }
 
-const PODCASTS = ["sup", "sup2", "joe rogan", "american life", "studio 404"]
+const PODCASTS = [
+    {
+        title: 'sup',
+        img: 'https://w0.peakpx.com/wallpaper/150/856/HD-wallpaper-goku-dragon-ball-dragon-ball-super-dragon-ball-z-kid-goku.jpg',
+    },
+    {
+        title: 'abc',
+        img: 'https://w0.peakpx.com/wallpaper/150/856/HD-wallpaper-goku-dragon-ball-dragon-ball-super-dragon-ball-z-kid-goku.jpg',
+    },
+    {
+        title: 'tws',
+        img: 'https://w0.peakpx.com/wallpaper/150/856/HD-wallpaper-goku-dragon-ball-dragon-ball-super-dragon-ball-z-kid-goku.jpg',
+    },
+    {
+        title: 'df',
+        img: 'https://w0.peakpx.com/wallpaper/150/856/HD-wallpaper-goku-dragon-ball-dragon-ball-super-dragon-ball-z-kid-goku.jpg',
+    },
+    {
+        title: 'gdfg',
+        img: 'https://w0.peakpx.com/wallpaper/150/856/HD-wallpaper-goku-dragon-ball-dragon-ball-super-dragon-ball-z-kid-goku.jpg',
+    },
+]
 
 async function getPodcasts(term) {
-  await wait(500);
+    await wait(500)
 
-  return PODCASTS.filter(e => e.includes(term));
+    return PODCASTS.filter((e) => e.title.includes(term))
 }
 
 const SearchBar = () => {
-  const [loading, setLoading] = useState(false);
-  const [searchResults, setSearchResults] = useState([]);
+    const [loading, setLoading] = useState(false)
+    const [searchResults, setSearchResults] = useState([])
 
-  async function search(term) {
-    setLoading(true)
-    const res = await getPodcasts(term);
-    setLoading(false)
-    setSearchResults(res);
-  }
+    async function search(term) {
+        setLoading(true)
+        const res = await getPodcasts(term)
+        setLoading(false)
+        setSearchResults(res)
+    }
 
-  return <>
-    <input
-      type='text'
-      placeholder='podcast or {url : todo define more}'
-      onInput={
-        debounce((e) => search(e.target.value), 1000)
-      }
-    />
-    {loading ?
-      'loading' :
-      <ul>
-        {searchResults.map((e, i) =>
-          <li key={i}>{e}</li>
-        )}
-      </ul>}
-  </>
+    return (
+        <>
+            <input
+                placeholder="Search Here..."
+                className="py-3 px-4 w-1/2 rounded shadow font-thin focus:outline-none focus:shadow-lg focus:shadow-slate-200 duration-100 shadow-gray-100"
+                type="search"
+                onInput={debounce((e) => search(e.target.value), 1000)}
+            />
+            {loading ? (
+                'loading'
+            ) : (
+                <ul className="w-1/2">
+                    {searchResults.map((e, i) => (
+                        <Link key={i} href={`/podcast/${e.title}`}>
+                            <li className="text-gray-700 p-4 mt-2 bg-white mx-2">
+                                <img src={e.img} className="w-11 h-11"></img>
+                                {e.title}
+                            </li>
+                        </Link>
+                    ))}
+                </ul>
+            )}
+        </>
+    )
 }
 export default SearchBar
