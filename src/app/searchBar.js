@@ -10,6 +10,9 @@ async function wait(n) {
         }, n)
     })
 }
+const URL_RE = new RegExp(
+    /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/
+)
 
 const PODCASTS = [
     {
@@ -46,9 +49,20 @@ const SearchBar = () => {
 
     async function search(term) {
         setLoading(true)
-        const res = await getPodcasts(term)
+        if (term.match(URL_RE)) {
+            //fake requete
+            await wait(1000)
+            setSearchResults([
+                {
+                    title: 'sup',
+                    img: 'https://w0.peakpx.com/wallpaper/150/856/HD-wallpaper-goku-dragon-ball-dragon-ball-super-dragon-ball-z-kid-goku.jpg',
+                },
+            ])
+        } else {
+            const res = await getPodcasts(term)
+            setSearchResults(res)
+        }
         setLoading(false)
-        setSearchResults(res)
     }
 
     return (
