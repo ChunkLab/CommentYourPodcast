@@ -73,6 +73,19 @@ export default function Home({ params }) {
                     </div>
                 </div>
             </div>
+            <input
+                placeholder="author.."
+                className="py-3 px-4 w-1/4 mt-10 rounded shadow font-thin focus:outline-none focus:shadow-lg focus:shadow-slate-200 duration-100 shadow-gray-100"
+                type="text"
+            />
+            <textarea
+                placeholder="comment.."
+                className="py-3 px-4 w-1/3 mt-3 rounded shadow font-thin focus:outline-none focus:shadow-lg focus:shadow-slate-200 duration-100 shadow-gray-100"
+                type="text"
+            />
+            <button class="transition-colors mt-3 bg-purple-700 hover:bg-purple-800 p-2 rounded-sm w-1/5 text-white text-hover shadow-md shadow-purple-900">
+                Follow
+            </button>
             <ul>
                 {episode_data.comments.map((e, i) => (
                     <li key={i}>
