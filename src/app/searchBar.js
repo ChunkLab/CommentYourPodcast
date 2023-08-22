@@ -3,44 +3,13 @@ import debounce from 'lodash.debounce'
 import Link from 'next/link'
 import { useState } from 'react'
 
-async function wait(n) {
-    return new Promise((res, _) => {
-        setTimeout(() => {
-            res()
-        }, n)
-    })
-}
 const URL_RE = new RegExp(
     /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/
 )
 
-const PODCASTS = [
-    {
-        title: 'sup',
-        img: 'https://w0.peakpx.com/wallpaper/150/856/HD-wallpaper-goku-dragon-ball-dragon-ball-super-dragon-ball-z-kid-goku.jpg',
-    },
-    {
-        title: 'abc',
-        img: 'https://w0.peakpx.com/wallpaper/150/856/HD-wallpaper-goku-dragon-ball-dragon-ball-super-dragon-ball-z-kid-goku.jpg',
-    },
-    {
-        title: 'tws',
-        img: 'https://w0.peakpx.com/wallpaper/150/856/HD-wallpaper-goku-dragon-ball-dragon-ball-super-dragon-ball-z-kid-goku.jpg',
-    },
-    {
-        title: 'df',
-        img: 'https://w0.peakpx.com/wallpaper/150/856/HD-wallpaper-goku-dragon-ball-dragon-ball-super-dragon-ball-z-kid-goku.jpg',
-    },
-    {
-        title: 'gdfg',
-        img: 'https://w0.peakpx.com/wallpaper/150/856/HD-wallpaper-goku-dragon-ball-dragon-ball-super-dragon-ball-z-kid-goku.jpg',
-    },
-]
-
 async function getPodcasts(term) {
-    await wait(500)
-
-    return PODCASTS.filter((e) => e.title.includes(term))
+    const res = await fetch(`/api/searchPodcasts/${term}`)
+    return await res.json()
 }
 
 const SearchBar = () => {
