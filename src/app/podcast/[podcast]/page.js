@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import { headers } from "next/headers";
+import { durationSecToString } from '@/app/utils'
+
 
 export default async function Home({ params }) {
   const host = headers().get("host");
@@ -31,12 +33,6 @@ export default async function Home({ params }) {
             <ul className="space-x-4 flex flex-row justify-center w-full mb-4">
               <li className="text-sm text-gray-800">
                 <strong className="text-gray-900">
-                  {podcast_data.nbComments}
-                </strong>{' '}
-                Comments
-              </li>
-              <li className="text-sm text-gray-800">
-                <strong className="text-gray-900">
                   {podcast_data.episodes.length}
                 </strong>{' '}
                 Episodes
@@ -46,36 +42,40 @@ export default async function Home({ params }) {
         </div>
       </div>
       <ul>
-        {podcast_data.episodes?.map((e, i) => (
-          <Link key={i} href={`/podcast/${params.podcast}/episode/${e.id}`}>
+        {podcast_data.episodes?.map((episode, i) => (
+          <Link key={i} href={`/podcast/${params.podcast}/episode/${episode.id}`}>
             <li>
               <div className="w-full max-w-lg py-8 flex flex-row items-center justify-center bg-[#FFFBFB] rounded-lg shadow-xl mt-10">
                 <div className="flex flex-col md:flex-row w-3/4 md:w-5/6 space-x-0 md:space-x-8">
                   <div className="w-20 flex flex-col items-center justify-center">
                     <figure className=" rounded-full overflow-hidden">
-                      <img src={podcast_data.img} alt={podcast_data.title} />
+                      <img src={episode.img} alt={episode.title} />
                     </figure>
                   </div>
                   <div className="w-full md:w-3/5 flex flex-col justify-center items-center">
                     <div className="flex flex-col justify-center">
                       <h2 className="text-center md:text-left text-xl font-bold text-gray-900">
-                        {e.title}
+                        {episode.title}
                       </h2>
                       <p className="inline text-gray-700 font-normal leading-6 w-full text-base">
-                        {e.description}
+                        {episode.description}
                       </p>
                     </div>
 
                     <ul className="space-x-4 flex flex-row justify-center w-full mb-4">
                       <li className="text-sm text-gray-800">
                         <strong className="text-gray-900">
-                          {e.nbComments}
-                        </strong>{' '}
+                          {episode.nbComments}
+                        </strong>
                         Comments
                       </li>
                       <li className="text-sm text-gray-800">
-                        <strong className="text-gray-900">{e.duration}</strong>{' '}
-                        Duration
+                        <strong className="text-gray-900">
+                          {durationSecToString(episode.duration)}
+                        </strong>
+                      </li>
+                      <li className="text-sm text-gray-800">
+                        {new Date(episode.createdAt * 1000).toLocaleString()}
                       </li>
                     </ul>
                   </div>

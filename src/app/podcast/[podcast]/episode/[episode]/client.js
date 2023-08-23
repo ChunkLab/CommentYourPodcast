@@ -1,6 +1,8 @@
 'use client'
 
+import { durationSecToString } from '@/app/utils'
 import { useRef, useState } from 'react'
+
 
 export default function Client({ episode_data }) {
   const [episodeData, setEpisodeData] = useState(episode_data)
@@ -37,14 +39,13 @@ export default function Client({ episode_data }) {
               <li className="text-sm text-gray-800">
                 <strong className="text-gray-900">
                   {episodeData.comments.length}
-                </strong>{' '}
+                </strong>
                 Comments
               </li>
               <li className="text-sm text-gray-800">
                 <strong className="text-gray-900">
-                  {episodeData.duration}
-                </strong>{' '}
-                Duration
+                  {durationSecToString(episodeData.duration)}
+                </strong>
               </li>
             </ul>
           </div>
@@ -67,7 +68,7 @@ export default function Client({ episode_data }) {
           addComment({
             author: authorInputRef.current.value,
             content: contentInputRef.current.value,
-            createdAt: new Date().getTime(),
+            createdAt: new Date().getTime() / 1000,
           })
         }}
         className="transition-colors mt-3 bg-purple-700 hover:bg-purple-800 p-2 rounded-sm w-1/5 text-white text-hover shadow-md shadow-purple-900"
@@ -95,7 +96,7 @@ export default function Client({ episode_data }) {
                     <ul className="space-x-4 flex flex-row justify-center w-full mb-4">
                       <li className="text-sm text-gray-800">
                         <strong className="text-gray-900">
-                          {new Date(e.createdAt).toString()}
+                          {new Date(e.createdAt * 1000).toLocaleString()}
                         </strong>
                       </li>
                     </ul>
