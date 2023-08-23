@@ -19,7 +19,6 @@ const SearchBar = () => {
     async function search(term) {
         setLoading(true)
         if (term.match(URL_RE)) {
-            //fake requete
             await wait(1000)
             setSearchResults([
                 {
@@ -47,7 +46,7 @@ const SearchBar = () => {
             ) : (
                 <ul className="w-1/2">
                     {searchResults.map((e, i) => (
-                        <Link key={i} href={`/podcast/${e.title}`}>
+                        <Link key={i} href={`/podcast/${e.id}`}>
                             <li className="text-gray-700 p-4 mt-2 bg-white mx-2">
                                 <img src={e.img} className="w-11 h-11"></img>
                                 {e.title}

@@ -2,9 +2,11 @@ import Link from 'next/link'
 
 export default async function Home({ params }) {
     const res = await fetch(
-        `http://localhost:3000/api/getPodcast/${params.podcast}`
+        `http://localhost:3000/api/getPodcast/${params.podcast}`,
+        { cache: 'no-store' }
     )
     const podcast_data = await res.json()
+
     return (
         <main className="flex min-h-screen flex-col items-center p-24">
             <div className="w-full max-w-lg py-8 flex flex-row items-center justify-center mx-auto bg-[#FFFBFB] rounded-lg shadow-xl">
@@ -45,7 +47,7 @@ export default async function Home({ params }) {
                 </div>
             </div>
             <ul>
-                {podcast_data.episodes.map((e, i) => (
+                {podcast_data.episodes?.map((e, i) => (
                     <Link
                         key={i}
                         href={`/podcast/${params.podcast}/episode/${e.title}`}
