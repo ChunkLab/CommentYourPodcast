@@ -19,15 +19,15 @@ export default function Client({ episode_data }) {
   return (
     <main className="flex min-h-screen flex-col items-center p-24">
       <div className="w-full max-w-lg py-8 flex flex-row items-center justify-center mx-auto bg-[#FFFBFB] rounded-lg shadow-xl">
-        <div className="flex flex-col md:flex-row w-3/4 md:w-5/6 space-x-0 md:space-x-8">
-          <div className="w-full md:w-2/5 flex flex-col items-center justify-center">
-            <figure className="w-1/2 md:w-full  rounded-full overflow-hidden">
+        <div className="flex flex-row w-5/6 space-x-8">
+          <div className="w-2/5 flex flex-col items-center justify-center">
+            <figure className="w-full  rounded-full overflow-hidden">
               <img src={episodeData.img} alt={episodeData.title} />
             </figure>
           </div>
-          <div className="w-full md:w-3/5 space-y-4 flex flex-col justify-center items-center">
+          <div className="w-3/5 space-y-4 flex flex-col justify-center items-center">
             <div className="flex flex-col justify-center">
-              <h1 className="text-center md:text-left text-2xl font-bold text-gray-900">
+              <h1 className="text-left text-2xl font-bold text-gray-900">
                 {episodeData.title}
               </h1>
               <p className="inline text-gray-700 font-normal leading-6 w-full text-base">
@@ -82,10 +82,10 @@ export default function Client({ episode_data }) {
           .map((e, i) => (
             <li key={i}>
               <div className="w-full max-w-lg py-8 flex flex-row items-center justify-center bg-[#FFFBFB] rounded-lg shadow-xl mt-10">
-                <div className="flex flex-col md:flex-row w-3/4 md:w-5/6 space-x-0 md:space-x-8">
-                  <div className="w-full md:w-3/5 flex flex-col justify-center items-center">
+                <div className="flex flex-row w-5/6 space-x-8">
+                  <div className="w-3/5 flex flex-col justify-center items-center">
                     <div className="flex flex-col justify-center">
-                      <h2 className="text-center md:text-left text-xl font-bold text-gray-900">
+                      <h2 className="text-left text-xl font-bold text-gray-900">
                         {e.author}
                       </h2>
                       <p className="inline text-gray-700 font-normal leading-6 w-full text-base">
