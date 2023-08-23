@@ -1,8 +1,10 @@
 import Link from 'next/link'
+import { headers } from "next/headers";
 
 export default async function Home({ params }) {
+  const host = headers().get("host");
   const res = await fetch(
-    `http://localhost:3000/api/getPodcast/${params.podcast}`,
+    `http://${host}/api/getPodcast/${params.podcast}`,
     { cache: 'no-store' }
   )
   const podcast_data = await res.json()
