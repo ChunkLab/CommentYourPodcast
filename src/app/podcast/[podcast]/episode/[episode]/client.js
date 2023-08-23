@@ -18,7 +18,7 @@ export default function Client({ episode_data }) {
 
   return (
     <main className="flex min-h-screen flex-col items-center p-24">
-      <div className="w-full max-w-lg py-8 flex flex-row items-center justify-center mx-auto bg-[#FFFBFB] rounded-lg shadow-xl">
+      <div className="w-full max-w-xlg py-8 flex flex-row items-center justify-center mx-auto bg-[#FFFBFB] rounded-lg shadow-xl">
         <div className="flex flex-row w-5/6 space-x-8">
           <div className="w-2/5 flex flex-col items-center justify-center">
             <figure className="w-full  rounded-full overflow-hidden">
