@@ -6,6 +6,7 @@ export default function Client({ episode_data }) {
   const [episodeData, setEpisodeData] = useState(episode_data)
   const authorInputRef = useRef()
   const contentInputRef = useRef()
+
   function addComment(comment) {
     setEpisodeData({
       ...episodeData,
