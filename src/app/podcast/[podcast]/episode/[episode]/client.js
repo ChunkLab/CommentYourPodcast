@@ -73,7 +73,7 @@ export default function Client({ episode_data }) {
         }}
         className="transition-colors mt-3 bg-purple-700 hover:bg-purple-800 p-2 rounded-sm w-1/5 text-white text-hover shadow-md shadow-purple-900"
       >
-        Follow
+        Comment
       </button>
       <ul>
         {episodeData.comments
