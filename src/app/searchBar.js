@@ -37,7 +37,7 @@ const SearchBar = () => {
     <>
       <input
         placeholder="Search Here..."
-        className="py-3 px-4 w-1/2 rounded shadow font-thin focus:outline-none focus:shadow-lg focus:shadow-slate-200 duration-100 shadow-gray-100"
+        className="py-3 px-4 w-full rounded shadow font-thin focus:outline-none focus:shadow-lg focus:shadow-slate-200 duration-100 shadow-gray-100"
         type="search"
         onInput={debounce((e) => search(e.target.value), 1000)}
       />
