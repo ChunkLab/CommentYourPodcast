@@ -36,8 +36,8 @@ const SearchBar = () => {
   return (
     <>
       <input
-        placeholder="Search Here..."
-        className="py-3 px-4 w-full rounded shadow font-thin focus:outline-none focus:shadow-lg focus:shadow-slate-200 duration-100 shadow-gray-100"
+        placeholder="write podcast or url"
+        className="search-bar md:w-[60%] md:h-[50px] w-[320px] h-[50px] rounded-[35px] md:border-[5px] border-[3px]"
         type="search"
         onInput={debounce((e) => search(e.target.value), 1000)}
       />
