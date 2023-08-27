@@ -39,7 +39,7 @@ const SearchBar = () => {
     <>
       <input
         placeholder="write podcast or url"
-        className="search-bar md:w-[60%] md:h-[50px] w-[320px] sm:w-[500px] h-[50px] rounded-[35px] md:border-[4px] border-[3px] px-5 europa-font"
+        className="search-bar md:w-[60%] md:h-[50px] w-[320px] sm:w-[500px] h-[50px] rounded-[35px]  border-[3px] px-5 europa-font"
         type="search"
         onInput={debounce((e) => search(e.target.value), 1000)}
       />
@@ -47,11 +47,11 @@ const SearchBar = () => {
         'loading'
       ) : <Fragment>
         {!isInputFeel ? '' : 
-        <div className='md:w-[60%] sm:w-[500px] rounded-xl  w-[320px] relative md:border-[4px]  border-[3px] list-wrapper mt-8 overflow-y-auto h-[240px] flex justify-between'>
+        <div className='md:w-[60%] sm:w-[500px] rounded-xl  w-[320px] relative   border-[3px] list-wrapper mt-8 overflow-y-auto h-[240px] flex justify-between'>
           <ul className="flex flex-col p-2 w-[100%]">
             {searchResults.map((e, i) => (
               <Link key={i} href={`/podcast/${e.id}`}>
-                <li className="p-4 mt-2 bg-transparent mx-2 rounded-2xl md:border-[4px] border-[2px] border-primary flex items-center li-list-podcast">
+                <li className="p-4 mt-2 bg-transparent mx-2 rounded-2xl  border-[2px] border-primary flex items-center li-list-podcast">
                   <div className='fill-circle'></div>
                   <img src={e.img} className="md:w-11 md:h-11 w-6 h-6 rounded-full"></img>
                   <p className='ml-6 europa-font color-primary w-[70%] overflow-hidden whitespace-nowrap text-ellipsis text-sm md:text-md'>{e.title}</p>
@@ -59,7 +59,7 @@ const SearchBar = () => {
               </Link>
             ))}
           </ul>
-          <div className='h-full md:w-[4px] w-[3px]  bg-primary sticky top-0 ml-[-10px]'></div>
+          <div className='h-full  w-[3px]  bg-primary sticky top-0 ml-[-10px]'></div>
         </div>
         }
       </Fragment>}
