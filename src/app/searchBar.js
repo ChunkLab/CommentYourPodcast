@@ -37,23 +37,27 @@ const SearchBar = () => {
     <>
       <input
         placeholder="write podcast or url"
-        className="search-bar md:w-[60%] md:h-[50px] w-[320px] h-[50px] rounded-[35px] md:border-[5px] border-[3px]"
+        className="search-bar md:w-[60%] md:h-[50px] w-[320px] h-[50px] rounded-[35px] md:border-[5px] border-[3px] px-5"
         type="search"
         onInput={debounce((e) => search(e.target.value), 1000)}
       />
       {loading ? (
         'loading'
       ) : (
-        <ul className="w-1/2">
-          {searchResults.map((e, i) => (
-            <Link key={i} href={`/podcast/${e.id}`}>
-              <li className="text-gray-700 p-4 mt-2 bg-white mx-2">
-                <img src={e.img} className="w-11 h-11"></img>
-                {e.title}
-              </li>
-            </Link>
-          ))}
-        </ul>
+        <div className='md:w-[60%] w-[320px] relative border-[5px] list-wrapper mt-8 overflow-y-auto h-[240px] flex justify-between'>
+          <ul className="flex flex-col">
+            {searchResults.map((e, i) => (
+              <Link key={i} href={`/podcast/${e.id}`}>
+                <li className="text-gray-700 p-4 mt-2 bg-white mx-2">
+                  <img src={e.img} className="w-11 h-11"></img>
+                  {e.title}
+                </li>
+              </Link>
+            ))}
+          </ul>
+          <div className='h-full w-[5px] bg-primary sticky top-0'></div>
+        </div>
+        
       )}
     </>
   )

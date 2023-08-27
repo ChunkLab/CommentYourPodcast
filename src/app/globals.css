@@ -15,6 +15,7 @@
 
 body {
   overflow: hidden;
+  --primary-color : #0A0D5C;
 }
 
 main {
@@ -25,7 +26,7 @@ main {
 
 h1{
   font-family: Europa;
-  color: #0A0D5C;
+  color: var(--primary-color);
 }
 
 .circle {
@@ -90,15 +91,31 @@ h1{
 
 
 .search-bar {
-  border: solid #0A0D5C;
-  background: #FEF3EA;
-  @apply px-5;
+  border: solid var(--primary-color);
+  background: transparent;
 }
 
 .search-bar::placeholder{
-  color: #0a0d5c9d;
+  color: var(--primary-color);
 }
 
 .search-bar:focus{
   outline: none;
+}
+
+.list-wrapper {
+  border-color: var(--primary-color);
+  scrollbar-width: 4px;
+}
+
+.list-wrapper::-webkit-scrollbar{
+  width: 4px;
+}
+
+.list-wrapper::-webkit-scrollbar-thumb{
+  background-color: var(--primary-color);
+} 
+
+.bg-primary{
+  background: var(--primary-color);
 }
