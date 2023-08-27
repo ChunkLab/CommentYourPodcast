@@ -131,3 +131,88 @@ h1{
 .europa-font {
   font-family: Europa, Arial, Helvetica, sans-serif;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+.li-list-podcast{
+ transition-duration: 0.2s;
+ transform-origin: center center;
+ scale: 1;
+}
+
+.li-list-podcast:hover{
+  scale: 1.02;
+  
+}
+
+.li-list-podcast:hover > *{
+  scale: 1;
+  color: white;
+}
+
+.fill-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+  visibility: hidden;
+  backdrop-filter: blur(5px);
+}
+
+.li-list-podcast:hover .fill-circle {
+  animation: fill-circle-animation;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  visibility: visible;
+}
+
+@keyframes fill-circle-animation {
+  0%{
+    
+    width: 50px;
+    height: 50px;
+  }
+  25%{
+    width: 100px;
+    height: 100%;
+  }
+  35%{
+    width: 50%;
+    height: 100%;
+  }
+  50%{
+    @apply rounded-full;
+    width: 100.5%;
+    height: 101%;
+    background-color: var(--primary-color);
+  }
+  55%{
+    @apply rounded-3xl;
+  }
+  100%{
+    @apply rounded-xl;
+    width: 100.5%;
+    height: 101%;
+    background-color: var(--primary-color);
+  }
+}
+
+@keyframes unfill-circle-animation {
+  0%{
+    
+  }
+}
