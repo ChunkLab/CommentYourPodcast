@@ -119,3 +119,15 @@ h1{
 .bg-primary{
   background: var(--primary-color);
 }
+
+.border-primary{
+  border-color: var(--primary-color);
+}
+
+.color-primary {
+  color: var(--primary-color);
+}
+
+.europa-font {
+  font-family: Europa, Arial, Helvetica, sans-serif;
+}

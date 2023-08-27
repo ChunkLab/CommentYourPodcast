@@ -22,7 +22,7 @@ export default function Home() {
         </div>
       </nav>
       <section className=' md:max-w-screen-lg min-h-screen w-full z-10'>
-        <div className='static flex flex-col items-center justify-center h-screen mt-[-100px] w-full'>
+        <div className='static flex flex-col items-center justify-center h-screen  w-full'>
           <h1 className='md:text-6xl text-3xl mb-20 '>Discover Podcasts</h1>
           <SearchBar></SearchBar>
         </div>
