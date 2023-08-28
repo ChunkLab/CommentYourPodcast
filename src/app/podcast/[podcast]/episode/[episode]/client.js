@@ -91,7 +91,7 @@ export default function Client({ episode_data }) {
                 <input
                   ref={authorInputRef}
                   placeholder="choose author name"
-                  className="z-10 mb-1 px-4 w-[90%] lg:w-[95%] h-[30px] rounded font-thin focus:outline-none"
+                  className="z-10 mb-1 bg-[#FFFBFB] px-4 w-[90%] lg:w-[95%] h-[30px] rounded focus:outline-none"
                   type="text"
                 />
               </div>
@@ -99,7 +99,7 @@ export default function Client({ episode_data }) {
               <textarea
                 ref={contentInputRef}
                 placeholder="add comment..."
-                className="z-10 py-3 px-4 w-full h-24 rounded font-thin focus:outline-none"
+                className="z-10 py-3 px-4 bg-[#FFFBFB] w-full h-24 rounded  focus:outline-none"
                 type="text"
               />
             </div>

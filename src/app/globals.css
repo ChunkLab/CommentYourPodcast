@@ -29,6 +29,18 @@ h1{
   color: var(--primary-color);
 }
 
+input, textarea {
+  font-family: Europa;
+}
+
+input::placeholder, textarea::placeholder{
+  font-family: Arial, Helvetica, sans-serif;
+  @apply text-gray-400 text-sm;
+  font-weight: 100;
+
+
+}
+
 .circle {
   --width-size-circle: 891px;
   --height-size-circle: 1140px;
