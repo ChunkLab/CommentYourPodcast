@@ -16,20 +16,48 @@ export default function Client({ episode_data }) {
     })
   }
 
+  function timeSince(date) {
+
+  var seconds = Math.floor((new Date() - date) / 1000);
+
+  var interval = seconds / 31536000;
+
+  if (interval > 1) {
+    return Math.floor(interval) + " years";
+  }
+  interval = seconds / 2592000;
+  if (interval > 1) {
+    return Math.floor(interval) + " months";
+  }
+  interval = seconds / 86400;
+  if (interval > 1) {
+    return Math.floor(interval) + " days";
+  }
+  interval = seconds / 3600;
+  if (interval > 1) {
+    return Math.floor(interval) + " hours";
+  }
+  interval = seconds / 60;
+  if (interval > 1) {
+    return Math.floor(interval) + " minutes";
+  }
+  return Math.floor(seconds) + " seconds";
+}
+
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
+    <main className="flex-col items-center flex">
       <div className='circle circle-orange'></div>
       <div className='circle circle-blue'></div>
-      <div className="w-full max-w-xlg py-8 flex flex-row items-center justify-center mx-auto bg-[#FFFBFB] rounded-lg shadow-xl z-10">
-        <div className="flex flex-row w-5/6 space-x-8">
-          <div className="w-2/5 flex flex-col items-center justify-center">
-            <figure className="w-full  rounded-full overflow-hidden">
-              <img src={episodeData.img} alt={episodeData.title} />
+      <div className="w-[300px] md:w-[600px] mt-20 p-8 flex flex-row items-center justify-center mx-auto bg-[#FFFBFB] rounded-lg shadow-xl z-10">
+        <div className="flex flex-col items-center lg:flex-row">
+          <div className="lg:w-2/5 flex flex-col items-center justify-center ">
+            <figure className="w-full   overflow-hidden">
+              <img src={episodeData.img} alt={episodeData.title} className='rounded-full w-40 h-40' />
             </figure>
           </div>
-          <div className="w-3/5 space-y-4 flex flex-col justify-center items-center">
+          <div className="lg:w-3/5 space-y-4 flex flex-col justify-center items-center">
             <div className="flex flex-col justify-center">
-              <h1 className="text-left text-2xl font-bold text-gray-900">
+              <h1 className="text-center text-2xl font-bold text-gray-900 mb-5">
                 {episodeData.title}
               </h1>
               <p className="inline text-gray-700 font-normal leading-6 w-full text-base">
@@ -37,16 +65,15 @@ export default function Client({ episode_data }) {
               </p>
             </div>
 
-            <ul className="space-x-4 flex flex-row justify-center w-full mb-4">
+            <ul className="md:space-x-4 flex flex-col md:flex-row justify-center w-full mb-4">
               <li className="text-sm text-gray-800">
                 <strong className="text-gray-900">
-                  {episodeData.comments.length}
+                  {episodeData.comments.length + " Coments"}
                 </strong>
-                Comments
               </li>
               <li className="text-sm text-gray-800">
                 <strong className="text-gray-900">
-                  {durationSecToString(episodeData.duration)}
+                  {"Duration : " + durationSecToString(episodeData.duration)}
                 </strong>
               </li>
             </ul>
@@ -56,16 +83,17 @@ export default function Client({ episode_data }) {
       <input
         ref={authorInputRef}
         placeholder="author.."
-        className="z-10 py-3 px-4 w-1/4 mt-10 rounded shadow font-thin focus:outline-none focus:shadow-lg focus:shadow-slate-200 duration-100 shadow-gray-100"
+        className="z-10 py-3 px-4 lg:w-1/4 mt-10 rounded shadow font-thin focus:outline-none focus:shadow-lg focus:shadow-slate-200 duration-100 shadow-gray-100"
         type="text"
       />
       <textarea
         ref={contentInputRef}
         placeholder="comment.."
-        className="z-10 py-3 px-4 w-1/3 mt-3 rounded shadow font-thin focus:outline-none focus:shadow-lg focus:shadow-slate-200 duration-100 shadow-gray-100"
+        className="z-10 py-3 px-4 w-[300px] lg:w-1/3 mt-3 rounded shadow font-thin focus:outline-none focus:shadow-lg focus:shadow-slate-200 duration-100 shadow-gray-100"
         type="text"
       />
-      <button
+      
+      <div 
         onClick={() => {
           addComment({
             author: authorInputRef.current.value,
@@ -73,35 +101,34 @@ export default function Client({ episode_data }) {
             createdAt: new Date().getTime() / 1000,
           })
         }}
-        className="z-10 transition-colors mt-3 bg-purple-700 hover:bg-purple-800 p-2 rounded-sm w-1/5 text-white text-hover shadow-md shadow-purple-900"
-      >
-        Comment
-      </button>
-      <ul className='z-10'>
+        className='relative cursor-pointer rounded-2xl text-center  border-primary border-[3px] button w-[200px] z-10 transition-colors mt-3 europa-font p-2 lg:w-1/5 text-white text-hover shadow-md shadow-slate-400'>
+        <div className='fill-circle'></div>
+        <p className="color-primary">Comment</p>
+      </div>
+      
+      <ul className='z-10 w-[300px] lg:w-[600px]'>
         {episodeData.comments
           .sort((e) => e.createdAt)
           .reverse()
           .map((e, i) => (
             <li key={i}>
-              <div className="w-full max-w-lg py-8 flex flex-row items-center justify-center bg-[#FFFBFB] rounded-lg shadow-xl mt-10">
-                <div className="flex flex-row w-5/6 space-x-8">
-                  <div className="w-3/5 flex flex-col justify-center items-center">
-                    <div className="flex flex-col justify-center">
-                      <h2 className="text-left text-xl font-bold text-gray-900">
-                        {e.author}
-                      </h2>
+              <div className="w-full  flex flex-row items-center justify-center bg-[#FFFBFB] rounded-lg shadow-xl mt-10">
+                <div className="p-5 w-full">
+                  <div className="flex flex-col justify-center items-center">
+                    <div className="flex flex-col justify-center w-full ">
+                      <div className='flex flex-wrap justify-between'>
+                        <h2 className="text-left font-bold text-gray-900 mb-5">
+                          {"@ " + e.author}
+                        </h2>
+                        <p> { timeSince(e.createdAt * 1000)}</p>
+                      </div>
+                      <div className='h-[1px] w-full bg-black mb-3'></div>
                       <p className="inline text-gray-700 font-normal leading-6 w-full text-base">
                         {e.content}
                       </p>
                     </div>
 
-                    <ul className="space-x-4 flex flex-row justify-center w-full mb-4">
-                      <li className="text-sm text-gray-800">
-                        <strong className="text-gray-900">
-                          {new Date(e.createdAt * 1000).toLocaleString()}
-                        </strong>
-                      </li>
-                    </ul>
+                   
                   </div>
                 </div>
               </div>

@@ -116,6 +116,9 @@ h1{
   background-color: var(--primary-color);
 } 
 
+
+/* Css class like tailwind */
+
 .bg-primary{
   background: var(--primary-color);
 }
@@ -134,15 +137,7 @@ h1{
 
 
 
-
-
-
-
-
-
-
-
-
+/* Annimation fill div: the parents need to be relative */
 
 .li-list-podcast{
  transition-duration: 0.2s;
@@ -171,6 +166,7 @@ h1{
   transform-origin: center center;
   visibility: hidden;
   backdrop-filter: blur(5px);
+  z-index: -1;
 }
 
 .li-list-podcast:hover .fill-circle {
@@ -178,6 +174,18 @@ h1{
   animation-duration: 0.3s;
   animation-fill-mode: forwards;
   visibility: visible;
+}
+
+.button:hover .fill-circle {
+  animation: fill-circle-animation;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  visibility: visible;
+  
+}
+
+.button:hover > * {
+  color: white;
 }
 
 @keyframes fill-circle-animation {
@@ -208,11 +216,5 @@ h1{
     width: 100.5%;
     height: 101%;
     background-color: var(--primary-color);
-  }
-}
-
-@keyframes unfill-circle-animation {
-  0%{
-    
   }
 }
