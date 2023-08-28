@@ -36,12 +36,12 @@ export default async function Home({ params }) {
           <div className="flex flex-col lg:flex-row ">
             <div className=" flex flex-col items-center justify-center">
               <figure className="w-full h-full overflow-hidden">
-                <img src={podcast_data.img} alt={podcast_data.title} className='lg:rounded-l-lg rounded-t-lg' />
+                <img src={podcast_data.img} alt={podcast_data.title} className=' lg:rounded-l-lg rounded-t-lg' />
               </figure>
             </div>
             <div className="w-full lg:w-3/5 flex flex-col justify-center items-center p-5">
               <div className="flex flex-col justify-center">
-                <h1 className="text-black text-3xl text-center mb-9">
+                <h1 className="text-black europa-font text-3xl text-center mb-9">
                   {podcast_data.title}
                 </h1>
                 <p className="inline text-gray-700 font-normal leading-6 w-full text-base">
@@ -75,7 +75,7 @@ export default async function Home({ params }) {
                     </div>
                     <div className=" w-full lg:w-3/5 flex flex-col justify-center items-center">
                       <div className="flex flex-col justify-center">
-                        <h2 className="text-center text-xl font-bold text-gray-900 mb-4" >
+                        <h2 className="text-center text-xl europa-font font-bold text-gray-900 mb-4" >
                           {episode.title}
                         </h2>
                         <p className="inline text-gray-700 font-normal leading-6 w-full text-base mb-4">

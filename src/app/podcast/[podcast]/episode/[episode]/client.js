@@ -57,7 +57,7 @@ export default function Client({ episode_data }) {
           </div>
           <div className="lg:w-3/5 space-y-4 flex flex-col justify-center items-center">
             <div className="flex flex-col justify-center">
-              <h1 className="text-center text-2xl font-bold text-gray-900 mb-5">
+              <h1 className="text-center europa-font text-2xl font-bold text-gray-900 mb-5">
                 {episodeData.title}
               </h1>
               <p className="inline text-gray-700 font-normal leading-6 w-full text-base">
@@ -133,13 +133,13 @@ export default function Client({ episode_data }) {
                   <div className="flex flex-col justify-center items-center">
                     <div className="flex flex-col justify-center w-full ">
                       <div className='flex flex-wrap justify-between'>
-                        <h2 className="text-left font-bold text-gray-900 mb-5">
+                        <h2 className="text-left europa-font text-gray-900 mb-5">
                           {"@ " + e.author}
                         </h2>
                         <p> { timeSince(e.createdAt * 1000)}</p>
                       </div>
                       <div className='h-[1px] w-full bg-black mb-3'></div>
-                      <p className="inline text-gray-700 font-normal leading-6 w-full text-base">
+                      <p className="inline europa-font text-gray-700 font-normal leading-6 w-full text-base">
                         {e.content}
                       </p>
                     </div>
