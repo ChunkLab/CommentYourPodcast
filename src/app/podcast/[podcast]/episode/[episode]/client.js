@@ -80,18 +80,32 @@ export default function Client({ episode_data }) {
           </div>
         </div>
       </div>
-      <input
-        ref={authorInputRef}
-        placeholder="author.."
-        className="z-10 py-3 px-4 lg:w-1/4 mt-10 rounded shadow font-thin focus:outline-none focus:shadow-lg focus:shadow-slate-200 duration-100 shadow-gray-100"
-        type="text"
-      />
-      <textarea
-        ref={contentInputRef}
-        placeholder="comment.."
-        className="z-10 py-3 px-4 w-[300px] lg:w-1/3 mt-3 rounded shadow font-thin focus:outline-none focus:shadow-lg focus:shadow-slate-200 duration-100 shadow-gray-100"
-        type="text"
-      />
+      <div className="z-10 w-[300px] lg:w-[600px] flex flex-row items-center justify-center bg-[#FFFBFB] rounded-lg shadow-xl mt-10">
+        <div className="p-5 w-full">
+          <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-col justify-center w-full ">
+              <div className='flex flex-wrap justify-between items-center'>
+                <h2 className="text-left font-bold text-gray-900 ">
+                  @
+                </h2>
+                <input
+                  ref={authorInputRef}
+                  placeholder="choose author name"
+                  className="z-10 mb-1 px-4 w-[90%] lg:w-[95%] h-[30px] rounded font-thin focus:outline-none"
+                  type="text"
+                />
+              </div>
+              <div className='h-[1px] w-full bg-black mb-3'></div>
+              <textarea
+                ref={contentInputRef}
+                placeholder="add comment..."
+                className="z-10 py-3 px-4 w-full h-24 rounded font-thin focus:outline-none"
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
       
       <div 
         onClick={() => {
@@ -101,7 +115,7 @@ export default function Client({ episode_data }) {
             createdAt: new Date().getTime() / 1000,
           })
         }}
-        className='relative cursor-pointer rounded-2xl text-center  border-primary border-[3px] button w-[200px] z-10 transition-colors mt-3 europa-font p-2 lg:w-1/5 text-white text-hover shadow-md shadow-slate-400'>
+        className='relative mt-10 cursor-pointer rounded-2xl text-center  border-primary border-[3px] button w-[200px] z-10 transition-colors  europa-font p-2 lg:w-1/5 text-white text-hover shadow-md shadow-slate-400'>
         <div className='fill-circle'></div>
         <p className="color-primary">Comment</p>
       </div>
