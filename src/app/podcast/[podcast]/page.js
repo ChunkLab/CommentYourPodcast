@@ -66,7 +66,7 @@ export default async function Home({ params }) {
           {podcast_data.episodes?.map((episode, i) => (
             <Link key={i} href={`/podcast/${params.podcast}/episode/${episode.id}`}>
               <li>
-                <div className="w-full lg:w-[600px] md:w-[500px] w-[300px] py-8 px-16 flex flex-row items-center justify-center bg-[#FFFBFB] rounded-lg shadow-xl mt-10">
+                <div className="lg:w-[600px] md:w-[500px] w-[300px] py-8 px-16 flex flex-row items-center justify-center bg-[#FFFBFB] rounded-lg shadow-xl mt-10">
                   <div className="flex lg:flex-row flex-col justify-between sm:items-center">
                     <div className=" flex flex-col items-center justify-center">
                       <figure className=" rounded-full overflow-hidden  mb-4 lg:mb-0">
