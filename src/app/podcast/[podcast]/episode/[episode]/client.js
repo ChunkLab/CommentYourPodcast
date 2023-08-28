@@ -114,6 +114,8 @@ export default function Client({ episode_data }) {
             content: contentInputRef.current.value,
             createdAt: new Date().getTime() / 1000,
           })
+          authorInputRef.current.value = ""
+          contentInputRef.current.value = ""
         }}
         className='relative mt-10 cursor-pointer rounded-2xl text-center  border-primary border-[3px] button w-[200px] z-10 transition-colors  europa-font p-2 lg:w-1/5 text-white text-hover shadow-md shadow-slate-400'>
         <div className='fill-circle'></div>
