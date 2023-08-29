@@ -16,6 +16,7 @@ model Podcast {
   title       String
   description String
   img         String
+  url         String    @unique
   episodes    Episode[]
 }
 
