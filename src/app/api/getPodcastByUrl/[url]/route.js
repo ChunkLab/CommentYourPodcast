@@ -28,5 +28,5 @@ export async function GET(_, { params }) {
   }))
   await prisma.episode.createMany({ data: episodes })
 
-  return NextResponse.json(podcast_data)
+  return NextResponse.json(podcast)
 }

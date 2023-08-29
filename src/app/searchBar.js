@@ -12,6 +12,11 @@ async function getPodcasts(term) {
   return await res.json()
 }
 
+async function getPodcastsByUrl(url) {
+  const res = await fetch(`/api/getPodcastByUrl/${encodeURIComponent(url)}`)
+  return [await res.json()]
+}
+
 const SearchBar = () => {
   const [loading, setLoading] = useState(false)
   const [searchResults, setSearchResults] = useState([])
@@ -21,13 +26,8 @@ const SearchBar = () => {
     setIsInputFeel(term.length != 0)
     setLoading(true)
     if (term.match(URL_RE)) {
-      await wait(1000)
-      setSearchResults([
-        {
-          title: 'sup',
-          img: 'https://w0.peakpx.com/wallpaper/150/856/HD-wallpaper-goku-dragon-ball-dragon-ball-super-dragon-ball-z-kid-goku.jpg',
-        },
-      ])
+      const res = await getPodcastsByUrl(term)
+      setSearchResults(res)
     } else {
       const res = await getPodcasts(term)
       setSearchResults(res)
