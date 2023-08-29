@@ -3,6 +3,12 @@ import { prisma } from '@/app/db'
 
 import { XMLParser } from 'fast-xml-parser'
 
+function parseTimeToSeconds(timeString) {
+  const [hours, minutes] = timeString.split(':').map(Number)
+  const totalSeconds = (hours * 60 + minutes) * 60
+  return totalSeconds
+}
+
 export async function GET(_, { params }) {
   const res = await fetch(params.url)
   const xml = await res.text()
@@ -22,7 +28,7 @@ export async function GET(_, { params }) {
     title: e.title,
     description: e.description,
     img: '',
-    duration: e['itunes:duration'],
+    duration: parseTimeToSeconds(e['itunes:duration']),
     createdAt: Date.parse(e.pubDate) / 1000,
     podcastId: podcast.id,
   }))
