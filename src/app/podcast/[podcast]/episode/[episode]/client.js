@@ -117,7 +117,7 @@ export default function Client({ episode_data }) {
           authorInputRef.current.value = ""
           contentInputRef.current.value = ""
         }}
-        className='relative mt-10 cursor-pointer rounded-2xl text-center  border-primary border-[3px] button w-[200px] z-10 transition-colors  europa-font p-2 lg:w-1/5 text-white text-hover shadow-md shadow-slate-400'>
+        className='mb-10 relative mt-10 cursor-pointer rounded-2xl text-center  border-primary border-[3px] button w-[200px] z-10 transition-colors  europa-font p-2 lg:w-1/5 text-white text-hover shadow-md shadow-slate-400'>
         <div className='fill-circle'></div>
         <p className="color-primary">Comment</p>
       </div>
@@ -128,7 +128,7 @@ export default function Client({ episode_data }) {
           .reverse()
           .map((e, i) => (
             <li key={i}>
-              <div className="w-full  flex flex-row items-center justify-center bg-[#FFFBFB] rounded-lg shadow-xl mt-10">
+              <div className="w-full  flex flex-row items-center justify-center bg-[#FFFBFB] rounded-lg shadow-xl mb-10">
                 <div className="p-5 w-full">
                   <div className="flex flex-col justify-center items-center">
                     <div className="flex flex-col justify-center w-full ">
