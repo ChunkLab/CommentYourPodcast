@@ -10,6 +10,17 @@ function parseTimeToSeconds(timeString) {
 }
 
 export async function GET(_, { params }) {
+  const urlIsExiste = await prisma.podcast.findUnique({
+    where: {
+      url: params.url,
+    },
+  })
+
+  if (urlIsExiste) {
+    console.log(urlIsExiste)
+    return NextResponse.json(urlIsExiste)
+  }
+
   const res = await fetch(params.url)
   const xml = await res.text()
 
@@ -21,6 +32,7 @@ export async function GET(_, { params }) {
       title: podcast_data.title,
       description: podcast_data.description,
       img: podcast_data.image.url,
+      url: params.url,
     },
   })
 
