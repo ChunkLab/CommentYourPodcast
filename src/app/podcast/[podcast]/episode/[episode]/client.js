@@ -9,11 +9,12 @@ export default function Client({ episode_data }) {
   const authorInputRef = useRef()
   const contentInputRef = useRef()
 
-  function addComment(comment) {
+  async function addComment(comment) {
     setEpisodeData({
       ...episodeData,
       comments: [...episodeData.comments, comment],
     })
+    await fetch("/api/addComment", {method: "POST", body: JSON.stringify(comment)})
   }
 
   function timeSince(date) {
@@ -113,6 +114,7 @@ export default function Client({ episode_data }) {
             author: authorInputRef.current.value,
             content: contentInputRef.current.value,
             createdAt: new Date().getTime() / 1000,
+            episodeId: episodeData.id
           })
           authorInputRef.current.value = ""
           contentInputRef.current.value = ""
