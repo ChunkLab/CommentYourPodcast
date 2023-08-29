@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Europa";
-  src: url("./asset/font/Europa-Bold.ttf")
+  font-family: 'Europa';
+  src: url('./asset/font/Europa-Bold.ttf');
 }
 
 :root {
@@ -15,37 +15,37 @@
 
 body {
   /* overflow: hidden; */
-  --primary-color : #0A0D5C;
+  --primary-color: #0a0d5c;
 }
 
 main {
-  background-color: #FEF3EA;
+  background-color: #fef3ea;
   overflow: hidden;
   position: relative;
 }
 
-h1{
+h1 {
   font-family: Europa;
   color: var(--primary-color);
 }
 
-input, textarea {
+input,
+textarea {
   font-family: Europa;
 }
 
-input::placeholder, textarea::placeholder{
+input::placeholder,
+textarea::placeholder {
   font-family: Arial, Helvetica, sans-serif;
   @apply text-gray-400 text-sm;
   font-weight: 100;
-
-
 }
 
 .circle {
   --width-size-circle: 891px;
   --height-size-circle: 1140px;
-  --center-circle-x: calc(var(--width-size-circle)/2);
-  --centen-circle-y: calc(var(--height-size-circle)/2);
+  --center-circle-x: calc(var(--width-size-circle) / 2);
+  --centen-circle-y: calc(var(--height-size-circle) / 2);
   z-index: 1;
   position: absolute;
   width: var(--width-size-circle);
@@ -54,64 +54,69 @@ input::placeholder, textarea::placeholder{
   border-radius: 1140px;
   backdrop-filter: blur(10px);
   animation: animateCricle infinite alternate;
-  
 }
 
-.circle-orange{
-  top: calc(100vh  - var(--centen-circle-y));
+.circle-orange {
+  top: calc(100vh - var(--centen-circle-y));
   left: calc(0px - var(--center-circle-x));
-  background: radial-gradient(48.01% 48.01% at 50.00% 50.00%, #FF5C00 0%, rgba(254, 243, 234, 0.56) 100%);
+  background: radial-gradient(
+    48.01% 48.01% at 50% 50%,
+    #ff5c00 0%,
+    rgba(254, 243, 234, 0.56) 100%
+  );
   animation-duration: 4s;
   animation-delay: 1s;
 }
 
-.circle-blue{
-  top: calc(50vh  - var(--centen-circle-y));
+.circle-blue {
+  top: calc(50vh - var(--centen-circle-y));
   left: calc(100vw - var(--center-circle-x));
-  background: radial-gradient(48.01% 48.01% at 50.00% 50.00%, #0047FF 0%, rgba(254, 243, 234, 0.56) 100%);
+  background: radial-gradient(
+    48.01% 48.01% at 50% 50%,
+    #0047ff 0%,
+    rgba(254, 243, 234, 0.56) 100%
+  );
   animation-duration: 6s;
 }
 
-@media ( max-width: 1024px ) {
-  .circle-blue{
-    top: calc(0px  - var(--centen-circle-y));
+@media (max-width: 1024px) {
+  .circle-blue {
+    top: calc(0px - var(--centen-circle-y));
     left: calc(100vw - var(--center-circle-x));
   }
 
   .circle {
     --width-size-circle: 630px;
-    --height-size-circle: 700px;  
+    --height-size-circle: 700px;
   }
 }
 
 @media (max-width: 768px) {
   .circle {
     --width-size-circle: 430px;
-    --height-size-circle: 600px;  
+    --height-size-circle: 600px;
   }
 }
-
 
 @keyframes animateCricle {
   0% {
-    scale:1;
+    scale: 1;
   }
-  100%{
-    scale:1.3 ;
+  100% {
+    scale: 1.3;
   }
 }
-
 
 .search-bar {
   border: solid var(--primary-color);
   background: transparent;
 }
 
-.search-bar::placeholder{
+.search-bar::placeholder {
   color: var(--primary-color);
 }
 
-.search-bar:focus{
+.search-bar:focus {
   outline: none;
 }
 
@@ -120,22 +125,21 @@ input::placeholder, textarea::placeholder{
   scrollbar-width: 4px;
 }
 
-.list-wrapper::-webkit-scrollbar{
+.list-wrapper::-webkit-scrollbar {
   width: 4px;
 }
 
-.list-wrapper::-webkit-scrollbar-thumb{
+.list-wrapper::-webkit-scrollbar-thumb {
   background-color: var(--primary-color);
-} 
-
+}
 
 /* Css class like tailwind */
 
-.bg-primary{
+.bg-primary {
   background: var(--primary-color);
 }
 
-.border-primary{
+.border-primary {
   border-color: var(--primary-color);
 }
 
@@ -147,22 +151,19 @@ input::placeholder, textarea::placeholder{
   font-family: Europa, Arial, Helvetica, sans-serif;
 }
 
-
-
 /* Annimation fill div: the parents need to be relative */
 
-.li-list-podcast{
- transition-duration: 0.2s;
- transform-origin: center center;
- scale: 1;
+.li-list-podcast {
+  transition-duration: 0.2s;
+  transform-origin: center center;
+  scale: 1;
 }
 
-.li-list-podcast:hover{
+.li-list-podcast:hover {
   scale: 1.02;
-  
 }
 
-.li-list-podcast:hover > *{
+.li-list-podcast:hover > * {
   scale: 1;
   color: white;
 }
@@ -193,7 +194,6 @@ input::placeholder, textarea::placeholder{
   animation-duration: 0.3s;
   animation-fill-mode: forwards;
   visibility: visible;
-  
 }
 
 .button:hover > * {
@@ -201,29 +201,28 @@ input::placeholder, textarea::placeholder{
 }
 
 @keyframes fill-circle-animation {
-  0%{
-    
+  0% {
     width: 50px;
     height: 50px;
   }
-  25%{
+  25% {
     width: 100px;
     height: 100%;
   }
-  35%{
+  35% {
     width: 50%;
     height: 100%;
   }
-  50%{
+  50% {
     @apply rounded-full;
     width: 100.5%;
     height: 101%;
     background-color: var(--primary-color);
   }
-  55%{
+  55% {
     @apply rounded-3xl;
   }
-  100%{
+  100% {
     @apply rounded-xl;
     width: 100.5%;
     height: 101%;
