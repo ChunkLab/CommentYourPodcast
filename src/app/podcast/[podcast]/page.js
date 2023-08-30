@@ -108,26 +108,20 @@ export default async function Home({ params }) {
               <li>
                 <div className="lg:w-[600px] md:w-[500px] w-[300px] py-8 px-16 flex flex-row items-center justify-center bg-[#FFFBFB] rounded-lg shadow-xl mt-10">
                   <div className="flex lg:flex-row flex-col justify-between sm:items-center">
-                    <div className=" flex flex-col items-center justify-center">
-                      <figure className=" rounded-full overflow-hidden  mb-4 lg:mb-0">
-                        <img
-                          src={episode.img}
-                          alt={episode.title}
-                          className="h-20 w-20"
-                        />
-                      </figure>
-                    </div>
-                    <div className=" w-full lg:w-3/5 flex flex-col justify-center items-center">
-                      <div className="flex flex-col justify-center">
+                    <div className=" w-full flex flex-col justify-center items-center">
+                      <div className="flex w-[300px] md:w-[600px] flex-col justify-center">
                         <h2 className="text-center text-xl europa-font font-bold text-gray-900 mb-4">
                           {episode.title}
                         </h2>
-                        <p className="inline text-gray-700 font-normal leading-6 w-full text-base mb-4">
-                          {episode.description}
-                        </p>
+                        <p
+                          dangerouslySetInnerHTML={{
+                            __html: episode.description,
+                          }}
+                          className="inline p-4 text-sm md:text-md text-gray-700 font-normal leading-6 w-full mb-4"
+                        ></p>
                       </div>
 
-                      <ul className="flex flex-col w-full mb-4">
+                      <ul className="flex p-4 flex-col w-full mb-4">
                         <li className="text-sm text-gray-800">
                           &#x2022; Comments : &nbsp;
                           <strong className="text-gray-900">

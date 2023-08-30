@@ -52,14 +52,15 @@ export default function Client({ episode_data }) {
       <div className="circle circle-blue"></div>
       <div className="w-[300px] md:w-[600px] mt-20 p-8 flex flex-row items-center justify-center mx-auto bg-[#FFFBFB] rounded-lg shadow-xl z-10">
         <div className="flex flex-col items-center lg:flex-row">
-          <div className="lg:w-3/5 space-y-4 flex flex-col justify-center items-center">
-            <div className="flex flex-col justify-center">
+          <div className=" space-y-4  flex flex-col justify-center items-center">
+            <div className="flex flex-col w-[300px] md:w-[600px] justify-center">
               <h1 className="text-center europa-font text-2xl font-bold text-gray-900 mb-5">
                 {episodeData.title}
               </h1>
-              <p className="inline text-gray-700 font-normal leading-6 w-full text-base">
-                {episodeData.description}
-              </p>
+              <p
+                dangerouslySetInnerHTML={{ __html: episodeData.description }}
+                className="inline p-4 text-sm md:text-md  text-gray-700 font-normal leading-6 w-full"
+              ></p>
             </div>
 
             <ul className="md:space-x-4 flex flex-col md:flex-row justify-center w-full mb-4">
