@@ -106,22 +106,22 @@ export default async function Home({ params }) {
               href={`/podcast/${params.podcast}/episode/${episode.id}`}
             >
               <li>
-                <div className="lg:w-[600px] md:w-[500px] w-[300px] py-8 px-16 flex flex-row items-center justify-center bg-[#FFFBFB] rounded-lg shadow-xl mt-10">
+                <div className="lg:w-[600px]  md:w-[500px] w-[300px] py-5 px-16 flex flex-row items-center justify-center bg-[#FFFBFB] rounded-lg shadow-xl mt-10">
                   <div className="flex lg:flex-row flex-col justify-between sm:items-center">
                     <div className=" w-full flex flex-col justify-center items-center">
                       <div className="flex w-[300px] md:w-[600px] flex-col justify-center">
                         <h2 className="text-center text-xl europa-font font-bold text-gray-900 mb-4">
                           {episode.title}
                         </h2>
-                        <p
+                        <div
                           dangerouslySetInnerHTML={{
                             __html: episode.description,
                           }}
-                          className="inline p-4 text-sm md:text-md text-gray-700 font-normal leading-6 w-full mb-4"
-                        ></p>
+                          className="text-ellipsis h-24 overflow-hidden inline p-4 text-sm md:text-lg text-gray-700 font-normal leading-6 w-full mb-4"
+                        ></div>
                       </div>
 
-                      <ul className="flex p-4 flex-col w-full mb-4">
+                      <ul className="flex p-4 flex-col w-full">
                         <li className="text-sm text-gray-800">
                           &#x2022; Comments : &nbsp;
                           <strong className="text-gray-900">
