@@ -4,21 +4,25 @@ import { prisma } from '@/app/db'
 import { XMLParser } from 'fast-xml-parser'
 
 function parseTimeToSeconds(timeString) {
-  const [hours, minutes] = timeString.split(':').map(Number)
-  const totalSeconds = (hours * 60 + minutes) * 60
-  return totalSeconds
+  try {
+    return parseInt(timeString)
+  } catch (err) {
+    const [hours, minutes] = timeString.split(':').map(Number)
+    const totalSeconds = (hours * 60 + minutes) * 60
+    return totalSeconds
+
+  }
 }
 
 export async function GET(_, { params }) {
-  const urlIsExiste = await prisma.podcast.findUnique({
+  const podcastData = await prisma.podcast.findUnique({
     where: {
       url: params.url,
     },
   })
 
-  if (urlIsExiste) {
-    console.log(urlIsExiste)
-    return NextResponse.json(urlIsExiste)
+  if (podcastData) {
+    return NextResponse.json(podcastData)
   }
 
   const res = await fetch(params.url)
