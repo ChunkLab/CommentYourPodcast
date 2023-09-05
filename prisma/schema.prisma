@@ -27,7 +27,7 @@ model Episode {
   img         String
   duration    Int
   createdAt   Int
-  Podcast     Podcast?  @relation(fields: [podcastId], references: [id])
+  Podcast     Podcast?  @relation(fields: [podcastId], references: [id], onDelete: Cascade)
   podcastId   Int?
   comments    Comment[]
 }
@@ -37,6 +37,6 @@ model Comment {
   author    String
   content   String
   createdAt Int
-  Episode   Episode? @relation(fields: [episodeId], references: [id])
+  Episode   Episode? @relation(fields: [episodeId], references: [id], onDelete: Cascade)
   episodeId Int?
 }
