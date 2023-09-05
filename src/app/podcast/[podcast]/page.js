@@ -10,11 +10,11 @@ export default async function Home({ params }) {
   const podcast_data = await res.json()
 
   return (
-    <main className="flex-col items-center flex">
+    <main className="flex flex-col items-center">
       <div className="circle circle-orange"></div>
       <div className="circle circle-blue"></div>
-      <nav className="absolute w-full md:p-8 invisible md:visible z-10">
-        <div className="lg:w-[169px] w-[89px]">
+      <nav className="invisible absolute z-10 w-full md:visible md:p-8">
+        <div className="w-[89px] lg:w-[169px]">
           <svg
             className="w-fill"
             viewBox="0 0 169 59"
@@ -64,29 +64,29 @@ export default async function Home({ params }) {
           </svg>
         </div>
       </nav>
-      <div className="flex md:max-w-screen-lg min-h-screen flex-col items-center md:py-24 lg:mt-20 mt-5 ">
-        <div className="z-10 lg:w-[1000px] md:w-[500px] w-[300px] flex flex-row items-center justify-center mx-auto bg-[#FFFBFB] rounded-lg shadow-xl">
+      <div className="mt-5 flex min-h-screen flex-col items-center md:max-w-screen-lg md:py-24 lg:mt-20 ">
+        <div className="z-10 mx-auto flex w-[300px] flex-row items-center justify-center rounded-lg bg-[#FFFBFB] shadow-xl md:w-[500px] lg:w-[1000px]">
           <div className="flex flex-col lg:flex-row ">
             <div className=" flex flex-col items-center justify-center">
-              <figure className="w-full h-full overflow-hidden">
+              <figure className="h-full w-full overflow-hidden">
                 <img
                   src={podcast_data.img}
                   alt={podcast_data.title}
-                  className=" lg:rounded-l-lg rounded-t-lg"
+                  className=" rounded-t-lg lg:rounded-l-lg"
                 />
               </figure>
             </div>
-            <div className="w-full lg:w-3/5 flex flex-col justify-center items-center p-5">
+            <div className="flex w-full flex-col items-center justify-center p-5 lg:w-3/5">
               <div className="flex flex-col justify-center">
-                <h1 className="text-black europa-font text-3xl text-center mb-9">
+                <h1 className="europa-font mb-9 text-center text-3xl text-black">
                   {podcast_data.title}
                 </h1>
-                <p className="inline text-gray-700 font-normal leading-6 w-full text-base">
+                <p className="inline w-full text-base font-normal leading-6 text-gray-700">
                   {podcast_data.description}
                 </p>
               </div>
 
-              <ul className="flex flex-row w-full mt-4">
+              <ul className="mt-4 flex w-full flex-row">
                 <li className="text-sm text-gray-800">
                   <p>
                     Episodes :
@@ -106,22 +106,22 @@ export default async function Home({ params }) {
               href={`/podcast/${params.podcast}/episode/${episode.id}`}
             >
               <li>
-                <div className="lg:w-[600px]  md:w-[500px] w-[300px] py-5 px-16 flex flex-row items-center justify-center bg-[#FFFBFB] rounded-lg shadow-xl mt-10">
-                  <div className="flex lg:flex-row flex-col justify-between sm:items-center">
-                    <div className=" w-full flex flex-col justify-center items-center">
-                      <div className="flex w-[300px] md:w-[600px] flex-col justify-center">
-                        <h2 className="text-center text-xl europa-font font-bold text-gray-900 mb-4">
+                <div className="mt-10  flex w-[300px] flex-row items-center justify-center rounded-lg bg-[#FFFBFB] px-16 py-5 shadow-xl md:w-[500px] lg:w-[600px]">
+                  <div className="flex flex-col justify-between sm:items-center lg:flex-row">
+                    <div className=" flex w-full flex-col items-center justify-center">
+                      <div className="flex w-[300px] flex-col justify-center md:w-[600px]">
+                        <h2 className="europa-font mb-4 text-center text-xl font-bold text-gray-900">
                           {episode.title}
                         </h2>
                         <div
                           dangerouslySetInnerHTML={{
                             __html: episode.description,
                           }}
-                          className="text-ellipsis h-24 overflow-hidden inline p-4 text-sm md:text-lg text-gray-700 font-normal leading-6 w-full mb-4"
+                          className="mb-4 inline h-24 w-full overflow-hidden text-ellipsis p-4 text-sm font-normal leading-6 text-gray-700 md:text-lg"
                         ></div>
                       </div>
 
-                      <ul className="flex p-4 flex-col w-full">
+                      <ul className="flex w-full flex-col p-4">
                         <li className="text-sm text-gray-800">
                           &#x2022; Comments : &nbsp;
                           <strong className="text-gray-900">

@@ -47,23 +47,23 @@ export default function Client({ episode_data }) {
   }
 
   return (
-    <main className="flex-col items-center flex">
+    <main className="flex flex-col items-center">
       <div className="circle circle-orange"></div>
       <div className="circle circle-blue"></div>
-      <div className="w-[300px] md:w-[600px] mt-20 p-8 flex flex-row items-center justify-center mx-auto bg-[#FFFBFB] rounded-lg shadow-xl z-10">
+      <div className="z-10 mx-auto mt-20 flex w-[300px] flex-row items-center justify-center rounded-lg bg-[#FFFBFB] p-8 shadow-xl md:w-[600px]">
         <div className="flex flex-col items-center lg:flex-row">
-          <div className=" space-y-4  flex flex-col justify-center items-center">
-            <div className="flex flex-col w-[300px] md:w-[600px] justify-center">
-              <h1 className="text-center europa-font text-2xl font-bold text-gray-900 mb-5">
+          <div className=" flex  flex-col items-center justify-center space-y-4">
+            <div className="flex w-[300px] flex-col justify-center md:w-[600px]">
+              <h1 className="europa-font mb-5 text-center text-2xl font-bold text-gray-900">
                 {episodeData.title}
               </h1>
               <p
                 dangerouslySetInnerHTML={{ __html: episodeData.description }}
-                className="inline p-4 text-sm md:text-md  text-gray-700 font-normal leading-6 w-full"
+                className="md:text-md inline w-full p-4  text-sm font-normal leading-6 text-gray-700"
               ></p>
             </div>
 
-            <ul className="md:space-x-4 flex flex-col md:flex-row justify-center w-full mb-4">
+            <ul className="mb-4 flex w-full flex-col justify-center md:flex-row md:space-x-4">
               <li className="text-sm text-gray-800">
                 <strong className="text-gray-900">
                   {episodeData.comments.length + ' Coments'}
@@ -78,24 +78,24 @@ export default function Client({ episode_data }) {
           </div>
         </div>
       </div>
-      <div className="z-10 w-[300px] lg:w-[600px] flex flex-row items-center justify-center bg-[#FFFBFB] rounded-lg shadow-xl mt-10">
-        <div className="p-5 w-full">
-          <div className="flex flex-col justify-center items-center">
-            <div className="flex flex-col justify-center w-full ">
-              <div className="flex flex-wrap justify-between items-center">
+      <div className="z-10 mt-10 flex w-[300px] flex-row items-center justify-center rounded-lg bg-[#FFFBFB] shadow-xl lg:w-[600px]">
+        <div className="w-full p-5">
+          <div className="flex flex-col items-center justify-center">
+            <div className="flex w-full flex-col justify-center ">
+              <div className="flex flex-wrap items-center justify-between">
                 <h2 className="text-left font-bold text-gray-900 ">@</h2>
                 <input
                   ref={authorInputRef}
                   placeholder="choose author name"
-                  className="z-10 mb-1 bg-[#FFFBFB] px-4 w-[90%] lg:w-[95%] h-[30px] rounded focus:outline-none"
+                  className="z-10 mb-1 h-[30px] w-[90%] rounded bg-[#FFFBFB] px-4 focus:outline-none lg:w-[95%]"
                   type="text"
                 />
               </div>
-              <div className="h-[1px] w-full bg-black mb-3"></div>
+              <div className="mb-3 h-[1px] w-full bg-black"></div>
               <textarea
                 ref={contentInputRef}
                 placeholder="add comment..."
-                className="z-10 py-3 px-4 bg-[#FFFBFB] w-full h-24 rounded  focus:outline-none"
+                className="z-10 h-24 w-full rounded bg-[#FFFBFB] px-4 py-3  focus:outline-none"
                 type="text"
               />
             </div>
@@ -114,7 +114,7 @@ export default function Client({ episode_data }) {
           authorInputRef.current.value = ''
           contentInputRef.current.value = ''
         }}
-        className="mb-10 relative mt-10 cursor-pointer rounded-2xl text-center  border-primary border-[3px] button w-[200px] z-10 transition-colors  europa-font p-2 lg:w-1/5 text-white text-hover shadow-md shadow-slate-400"
+        className="border-primary button europa-font text-hover relative z-10  mb-10 mt-10 w-[200px] cursor-pointer rounded-2xl border-[3px]  p-2 text-center text-white shadow-md shadow-slate-400 transition-colors lg:w-1/5"
       >
         <div className="fill-circle"></div>
         <p className="color-primary">Comment</p>
@@ -126,18 +126,18 @@ export default function Client({ episode_data }) {
           .reverse()
           .map((e, i) => (
             <li key={i}>
-              <div className="w-full  flex flex-row items-center justify-center bg-[#FFFBFB] rounded-lg shadow-xl mb-10">
-                <div className="p-5 w-full">
-                  <div className="flex flex-col justify-center items-center">
-                    <div className="flex flex-col justify-center w-full ">
+              <div className="mb-10  flex w-full flex-row items-center justify-center rounded-lg bg-[#FFFBFB] shadow-xl">
+                <div className="w-full p-5">
+                  <div className="flex flex-col items-center justify-center">
+                    <div className="flex w-full flex-col justify-center ">
                       <div className="flex flex-wrap justify-between">
-                        <h2 className="text-left europa-font text-gray-900 mb-5">
+                        <h2 className="europa-font mb-5 text-left text-gray-900">
                           {'@ ' + e.author}
                         </h2>
                         <p> {timeSince(e.createdAt * 1000)}</p>
                       </div>
-                      <div className="h-[1px] w-full bg-black mb-3"></div>
-                      <p className="inline europa-font text-gray-700 font-normal leading-6 w-full text-base">
+                      <div className="mb-3 h-[1px] w-full bg-black"></div>
+                      <p className="europa-font inline w-full text-base font-normal leading-6 text-gray-700">
                         {e.content}
                       </p>
                     </div>

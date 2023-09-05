@@ -5,11 +5,11 @@ import Head from 'next/head'
 export default function Home() {
   return (
     <Fragment>
-      <main className="flex-col items-center flex">
+      <main className="flex flex-col items-center">
         <div className="circle circle-orange"></div>
         <div className="circle circle-blue"></div>
-        <nav className="absolute w-full md:p-8 invisible md:visible z-10">
-          <div className="lg:w-[169px] w-[89px]">
+        <nav className="invisible absolute z-10 w-full md:visible md:p-8">
+          <div className="w-[89px] lg:w-[169px]">
             <svg
               className="w-fill"
               viewBox="0 0 169 59"
@@ -59,9 +59,9 @@ export default function Home() {
             </svg>
           </div>
         </nav>
-        <section className=" md:max-w-screen-lg min-h-screen w-full z-10">
-          <div className="static flex flex-col items-center justify-center h-screen  w-full">
-            <h1 className="md:text-6xl text-3xl mb-20 ">Discover Podcasts</h1>
+        <section className=" z-10 min-h-screen w-full md:max-w-screen-lg">
+          <div className="static flex h-screen w-full flex-col items-center  justify-center">
+            <h1 className="mb-20 text-3xl md:text-6xl ">Discover Podcasts</h1>
             <SearchBar></SearchBar>
           </div>
         </section>

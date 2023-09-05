@@ -37,7 +37,7 @@ textarea {
 input::placeholder,
 textarea::placeholder {
   font-family: Arial, Helvetica, sans-serif;
-  @apply text-gray-400 text-sm;
+  @apply text-sm text-gray-400;
   font-weight: 100;
 }
 
