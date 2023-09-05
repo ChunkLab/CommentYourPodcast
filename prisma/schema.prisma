@@ -30,6 +30,7 @@ model Episode {
   Podcast     Podcast?  @relation(fields: [podcastId], references: [id], onDelete: Cascade)
   podcastId   Int?
   comments    Comment[]
+  audioUrl    String?
 }
 
 model Comment {

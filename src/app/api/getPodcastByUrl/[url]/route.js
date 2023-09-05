@@ -3,7 +3,6 @@ import { prisma } from '@/app/db'
 
 import { getPodcastFromURL } from '@podverse/podcast-feed-parser'
 
-
 export async function GET(_, { params }) {
   const podcastDataDb = await prisma.podcast.findUnique({
     where: {
@@ -34,12 +33,12 @@ export async function GET(_, { params }) {
       duration: parseInt(e.duration) || 0,
       createdAt: new Date(e.pubDate).getTime() / 1000,
       podcastId: podcast.id,
+      audioUrl: e.enclosure.url,
     }))
     await prisma.episode.createMany({ data: episodes })
 
     return NextResponse.json(podcast)
   } catch (e) {
-    return NextResponse.json({ 'err': e })
+    return NextResponse.json({ err: e })
   }
-
 }

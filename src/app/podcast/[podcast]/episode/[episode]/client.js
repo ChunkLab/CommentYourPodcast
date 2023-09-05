@@ -2,6 +2,7 @@
 
 import { durationSecToString } from '@/app/utils'
 import { useRef, useState } from 'react'
+import ReactAudioPlayer from 'react-audio-player'
 
 export default function Client({ episode_data }) {
   const [episodeData, setEpisodeData] = useState(episode_data)
@@ -62,7 +63,10 @@ export default function Client({ episode_data }) {
                 className="md:text-md inline w-full p-4  text-sm font-normal leading-6 text-gray-700"
               ></p>
             </div>
-
+            <ReactAudioPlayer
+              src={episodeData.audioUrl}
+              controls
+            ></ReactAudioPlayer>
             <ul className="mb-4 flex w-full flex-col justify-center md:flex-row md:space-x-4">
               <li className="text-sm text-gray-800">
                 <strong className="text-gray-900">
