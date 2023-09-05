@@ -1,54 +1,45 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/app/db'
 
-import { XMLParser } from 'fast-xml-parser'
+import { getPodcastFromURL } from '@podverse/podcast-feed-parser'
 
-function parseTimeToSeconds(timeString) {
-  try {
-    return parseInt(timeString)
-  } catch (err) {
-    const [hours, minutes] = timeString.split(':').map(Number)
-    const totalSeconds = (hours * 60 + minutes) * 60
-    return totalSeconds
-
-  }
-}
 
 export async function GET(_, { params }) {
-  const podcastData = await prisma.podcast.findUnique({
+  const podcastDataDb = await prisma.podcast.findUnique({
     where: {
       url: params.url,
     },
   })
 
-  if (podcastData) {
-    return NextResponse.json(podcastData)
+  if (podcastDataDb) {
+    return NextResponse.json(podcastDataDb)
   }
 
-  const res = await fetch(params.url)
-  const xml = await res.text()
+  const podcastData = await getPodcastFromURL({ url: params.url })
 
-  const parser = new XMLParser()
-  let podcast_data = parser.parse(xml).rss.channel
+  try {
+    const podcast = await prisma.podcast.create({
+      data: {
+        title: podcastData.meta.title || 'no title',
+        description: podcastData.meta.description || 'no description',
+        img: podcastData.meta.imageURL,
+        url: params.url,
+      },
+    })
 
-  const podcast = await prisma.podcast.create({
-    data: {
-      title: podcast_data.title,
-      description: podcast_data.description,
-      img: podcast_data.image.url,
-      url: params.url,
-    },
-  })
+    const episodes = podcastData.episodes.map((e) => ({
+      title: e.title || 'no title',
+      description: e.description || 'no description',
+      img: e.img || e.imageURL || podcastData.meta.imageURL,
+      duration: parseInt(e.duration) || 0,
+      createdAt: new Date(e.pubDate).getTime() / 1000,
+      podcastId: podcast.id,
+    }))
+    await prisma.episode.createMany({ data: episodes })
 
-  const episodes = podcast_data.item.map((e) => ({
-    title: e.title,
-    description: e.description,
-    img: '',
-    duration: parseTimeToSeconds(e['itunes:duration']),
-    createdAt: Date.parse(e.pubDate) / 1000,
-    podcastId: podcast.id,
-  }))
-  await prisma.episode.createMany({ data: episodes })
+    return NextResponse.json(podcast)
+  } catch (e) {
+    return NextResponse.json({ 'err': e })
+  }
 
-  return NextResponse.json(podcast)
 }
